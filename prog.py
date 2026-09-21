@@ -16,7 +16,7 @@ def iterate_wordlist(wordlist: Path, extensions: list[str] | None) -> Iterator[s
     with wordlist.open("r", encoding="utf-8") as file:
         for line in file:
             item = line.strip().lstrip("/")
-            if not item:
+            if not item or item.startswith("#"):
                 continue
 
             yield item
